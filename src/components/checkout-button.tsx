@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 type RazorpaySuccessResponse = {
   razorpay_payment_id: string
@@ -64,7 +65,15 @@ type CreateOrderResponse = {
   keyId: string
 }
 
-export function CheckoutButton() {
+type CheckoutButtonProps = {
+  buttonLabel?: string
+  buttonClassName?: string
+}
+
+export function CheckoutButton({
+  buttonLabel = "Upgrade to Pro - INR 3000",
+  buttonClassName,
+}: CheckoutButtonProps = {}) {
   const [isLoading, setIsLoading] = useState(false)
   const [statusMessage, setStatusMessage] = useState<string | null>(null)
   const [showLoginLink, setShowLoginLink] = useState(false)
@@ -151,8 +160,8 @@ export function CheckoutButton() {
 
   return (
     <div className="space-y-2">
-      <Button onClick={handleCheckout} disabled={isLoading}>
-        {isLoading ? "Opening checkout..." : "Upgrade to Pro - INR 3000"}
+      <Button className={cn(buttonClassName)} onClick={handleCheckout} disabled={isLoading}>
+        {isLoading ? "Opening checkout..." : buttonLabel}
       </Button>
       {statusMessage ? <p className="text-sm text-muted-foreground">{statusMessage}</p> : null}
       {showLoginLink ? (

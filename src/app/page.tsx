@@ -1,13 +1,13 @@
 import { Rocket, ShieldCheck, Sparkles, Zap } from "lucide-react"
 
-import { CheckoutButton } from "@/components/checkout-button"
 import { HeroSection } from "@/components/sections/hero-section"
 import { HowItWorksSection } from "@/components/sections/how-it-works-section"
 import { MarketingNavbar } from "@/components/sections/marketing-navbar"
+import { PricingSection } from "@/components/sections/pricing-section"
 import { ProblemSection } from "@/components/sections/problem-section"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 const features = [
   {
@@ -60,6 +60,7 @@ function FullLandingPage() {
         <HeroSection />
         <ProblemSection />
         <HowItWorksSection />
+        <PricingSection />
 
         <section className="mt-10 grid gap-4 sm:grid-cols-2">
           {features.map(({ icon: Icon, title, description }) => (
@@ -75,39 +76,6 @@ function FullLandingPage() {
           ))}
         </section>
 
-        <section id="pricing" className="mt-10 scroll-mt-28 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <Card className="border-slate-200/80 bg-white/90 shadow-sm">
-            <CardHeader>
-              <CardTitle className="text-2xl">Pre-launch Waitlist</CardTitle>
-              <CardDescription className="text-base">
-                Capture intent before launch. Every signup is saved in Prisma and receives an email confirmation.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <WaitlistForm />
-            </CardContent>
-          </Card>
-
-          <Card className="border-slate-900 bg-slate-950 text-white shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-2xl">Pro Plan</CardTitle>
-              <CardDescription className="text-slate-300">One-time early access offer</CardDescription>
-              <p className="mt-2 text-4xl font-bold">
-                INR 3000 <span className="text-base font-medium text-slate-300">lifetime</span>
-              </p>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <ul className="space-y-2 text-sm text-slate-200">
-                <li>SSR auth + protected routes</li>
-                <li>Razorpay checkout + webhook handling</li>
-                <li>Prisma schema for users and subscriptions</li>
-                <li>Marketing waitlist + email automation</li>
-              </ul>
-              <CheckoutButton />
-              <p className="text-xs text-slate-400">If not signed in, checkout will prompt login first.</p>
-            </CardContent>
-          </Card>
-        </section>
       </section>
     </main>
   )
