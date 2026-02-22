@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Rocket, ShieldCheck, Sparkles, Zap } from "lucide-react"
 
 import { CheckoutButton } from "@/components/checkout-button"
+import { MarketingNavbar } from "@/components/sections/marketing-navbar"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -51,9 +52,14 @@ function WaitlistOnlyPage() {
 
 function FullLandingPage() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#c4f1ff_0%,_#f8fafc_45%,_#ffffff_80%)] px-6 py-12">
-      <section className="mx-auto max-w-6xl">
-        <header className="rounded-3xl border border-slate-200/80 bg-white/85 p-8 shadow-sm backdrop-blur sm:p-12">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#c4f1ff_0%,_#f8fafc_45%,_#ffffff_80%)] px-6 py-6 sm:py-8">
+      <MarketingNavbar />
+
+      <section className="mx-auto mt-6 max-w-6xl">
+        <header
+          id="about"
+          className="scroll-mt-28 rounded-3xl border border-slate-200/80 bg-white/85 p-8 shadow-sm backdrop-blur sm:p-12"
+        >
           <div className="flex flex-wrap items-center justify-between gap-3">
             <Badge variant="secondary">Next.js 15 + Supabase + Prisma + Razorpay</Badge>
             <div className="flex gap-2">
@@ -75,7 +81,7 @@ function FullLandingPage() {
           </p>
         </header>
 
-        <section className="mt-10 grid gap-4 sm:grid-cols-2">
+        <section id="documentation" className="mt-10 scroll-mt-28 grid gap-4 sm:grid-cols-2">
           {features.map(({ icon: Icon, title, description }) => (
             <Card key={title} className="border-slate-200/80 bg-white/90 shadow-sm">
               <CardHeader>
@@ -89,7 +95,7 @@ function FullLandingPage() {
           ))}
         </section>
 
-        <section className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <section id="pricing" className="mt-10 scroll-mt-28 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
           <Card className="border-slate-200/80 bg-white/90 shadow-sm">
             <CardHeader>
               <CardTitle className="text-2xl">Pre-launch Waitlist</CardTitle>
