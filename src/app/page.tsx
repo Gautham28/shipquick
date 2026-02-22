@@ -1,5 +1,6 @@
 import { Rocket, ShieldCheck, Sparkles, Zap } from "lucide-react"
 
+import { CtaSection } from "@/components/sections/cta-section"
 import { FaqSection } from "@/components/sections/faq-section"
 import { HeroSection } from "@/components/sections/hero-section"
 import { HowItWorksSection } from "@/components/sections/how-it-works-section"
@@ -63,6 +64,7 @@ function FullLandingPage() {
         <HowItWorksSection />
         <PricingSection />
         <FaqSection />
+        <CtaSection />
 
         <section className="mt-10 grid gap-4 sm:grid-cols-2">
           {features.map(({ icon: Icon, title, description }) => (
