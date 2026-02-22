@@ -2,7 +2,9 @@ import { Rocket, ShieldCheck, Sparkles, Zap } from "lucide-react"
 
 import { CheckoutButton } from "@/components/checkout-button"
 import { HeroSection } from "@/components/sections/hero-section"
+import { HowItWorksSection } from "@/components/sections/how-it-works-section"
 import { MarketingNavbar } from "@/components/sections/marketing-navbar"
+import { ProblemSection } from "@/components/sections/problem-section"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -56,8 +58,10 @@ function FullLandingPage() {
 
       <section className="mx-auto mt-2 max-w-6xl">
         <HeroSection />
+        <ProblemSection />
+        <HowItWorksSection />
 
-        <section id="documentation" className="mt-10 scroll-mt-28 grid gap-4 sm:grid-cols-2">
+        <section className="mt-10 grid gap-4 sm:grid-cols-2">
           {features.map(({ icon: Icon, title, description }) => (
             <Card key={title} className="border-slate-200/80 bg-white/90 shadow-sm">
               <CardHeader>
