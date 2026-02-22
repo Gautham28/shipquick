@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -66,6 +67,7 @@ type CreateOrderResponse = {
 export function CheckoutButton() {
   const [isLoading, setIsLoading] = useState(false)
   const [statusMessage, setStatusMessage] = useState<string | null>(null)
+  const [showLoginLink, setShowLoginLink] = useState(false)
 
   async function loadCheckoutScript() {
     if (window.Razorpay) return true
@@ -83,6 +85,7 @@ export function CheckoutButton() {
   async function handleCheckout() {
     setIsLoading(true)
     setStatusMessage(null)
+    setShowLoginLink(false)
 
     try {
       const createOrderResponse = await fetch("/api/razorpay/create-order", {
@@ -90,6 +93,10 @@ export function CheckoutButton() {
       })
 
       if (!createOrderResponse.ok) {
+        if (createOrderResponse.status === 401) {
+          setShowLoginLink(true)
+        }
+
         const errorJson = (await createOrderResponse.json().catch(() => null)) as
           | { error?: string; details?: string }
           | null
@@ -148,6 +155,13 @@ export function CheckoutButton() {
         {isLoading ? "Opening checkout..." : "Upgrade to Pro - INR 3000"}
       </Button>
       {statusMessage ? <p className="text-sm text-muted-foreground">{statusMessage}</p> : null}
+      {showLoginLink ? (
+        <p className="text-sm">
+          <Link className="underline underline-offset-4" href="/login?redirectedFrom=/dashboard">
+            Sign in to continue checkout
+          </Link>
+        </p>
+      ) : null}
     </div>
   )
 }
