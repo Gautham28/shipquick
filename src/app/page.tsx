@@ -1,11 +1,10 @@
-import Link from "next/link"
 import { Rocket, ShieldCheck, Sparkles, Zap } from "lucide-react"
 
 import { CheckoutButton } from "@/components/checkout-button"
+import { HeroSection } from "@/components/sections/hero-section"
 import { MarketingNavbar } from "@/components/sections/marketing-navbar"
 import { WaitlistForm } from "@/components/waitlist-form"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 const features = [
@@ -55,31 +54,8 @@ function FullLandingPage() {
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#c4f1ff_0%,_#f8fafc_45%,_#ffffff_80%)] px-6 py-6 sm:py-8">
       <MarketingNavbar />
 
-      <section className="mx-auto mt-6 max-w-6xl">
-        <header
-          id="about"
-          className="scroll-mt-28 rounded-3xl border border-slate-200/80 bg-white/85 p-8 shadow-sm backdrop-blur sm:p-12"
-        >
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <Badge variant="secondary">Next.js 15 + Supabase + Prisma + Razorpay</Badge>
-            <div className="flex gap-2">
-              <Button asChild variant="outline">
-                <Link href="/login">Log in</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/signup">Get Started</Link>
-              </Button>
-            </div>
-          </div>
-
-          <h1 className="mt-8 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
-            Ship production SaaS products in days, not months.
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-600">
-            ShipQuick gives you authentication, subscription billing, gated dashboards, admin analytics, and waitlist
-            growth loops in one clean codebase.
-          </p>
-        </header>
+      <section className="mx-auto mt-2 max-w-6xl">
+        <HeroSection />
 
         <section id="documentation" className="mt-10 scroll-mt-28 grid gap-4 sm:grid-cols-2">
           {features.map(({ icon: Icon, title, description }) => (
